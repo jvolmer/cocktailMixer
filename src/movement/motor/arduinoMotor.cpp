@@ -1,5 +1,4 @@
 #include "arduinoMotor.hpp"
-#include "Arduino.h"
 
 ArduinoMotor::ArduinoMotor(const byte pinDirectionLeft,
                            const byte pinMotorLeft,

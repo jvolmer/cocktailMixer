@@ -1,9 +1,8 @@
 #ifndef ARDUINO_TRACKER_H
 #define ARDUINO_TRACKER_H
 
-#include "../entity/roadLayout.hpp"
+#include "roadLayout.hpp"
 #include "tracker.hpp"
-#include "Arduino.h"
 
 class ArduinoTracker: public Tracker
 {

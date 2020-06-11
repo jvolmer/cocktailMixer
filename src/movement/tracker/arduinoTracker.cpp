@@ -1,6 +1,5 @@
-#include "../entity/roadLayout.hpp"
+#include "roadLayout.hpp"
 #include "arduinoTracker.hpp"
-#include "Arduino.h"
 
 ArduinoTracker::ArduinoTracker(const byte pinTrackingLeft,
                                const byte pinTrackingMiddle,
