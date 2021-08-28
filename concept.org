@@ -1,0 +1,63 @@
+#+TITLE: Cocktail-Mixer Concept
+
+Interacting embedded devices mix and serve cocktails
+
+* Background (Motivation)
+
+This cocktail-mixer is composed of several self-driving miniature car, where each one transports a cocktail glas from filling station to filling station where different beverages are added.
+
+This project was initiated by the VDI Cologne Group 4-to-90 but is currently paused.
+
+* Overview
+
+** Components
+- Cocktail Menu (single)
+- Car (multiple)
+- Filling station (multiple)
+- Traffic control (single)
+
+** Dynamics
+
+Menu -> Car -> Filling station -> Filling station -> ... -> Cars Endpoint
+
+Special case: Possible crash
+Stop -> Traffic Control -> possible sideway point
+
+* Communication channels
+
+Optimized for less communication exchange, because it is error prone
+
+** Menu - Car
+
+** Car - Filling station
+
+** Car - Traffic control
+
+* Components
+
+** Car
+
+Knows all its waypoints
+
+It has 4 states
+- Receiving waypoints. Problem: no heap - array with nmax+1 items (one more for possible sidestep coordinate: if it comes, it will go to current-1 index)
+- Moving: Checking lines and look for obstacles
+- Stopped to be filled at filling station: communicate with station
+- Stopped due to obstacle: communicate with control
+
+  If on the way there is another car: stop and send coordinate to control
+
+** Traffic Control
+
+Gets only position of cars that have stopped due to obstacles
+
+If Control gets one of these signals, it does not do anything. If its too long, send sidestep coordinate
+If Control gets two signals around the same time from close positions, it sends a sidestep coordinate to one of the cars (by random or with additional information of both goals)
+
+** Filling Station
+
+A filling station is positioned above one line crossing, includes currently four bottles for different beverages and one Arduino which controls pouring the beverages into the cocktail glas on top of the car. Each bottle has its own pump which pumps the liquid out of the bottle. The filling station itself knows which liquid is in which bottle and how long a pump has to pump to pour some ml of this specific beverage.
+
+Alternatives:
+- The control knows when a car is located underneath a specific filling station. It sends a singal to the filling station including the name and the amoung of the desired beverage.
+- The car communicates with the filling station. Therefore the car has to know that it is located underneath a filling station and the desired amount of specific beverage.

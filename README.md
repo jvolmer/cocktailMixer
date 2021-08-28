@@ -1,8 +1,14 @@
 # Cocktail-Mixer
 
+> Interacting embedded devices mix and serve cocktails
+
+## Background
+
 This cocktail-mixer is composed of several self-driving miniature car, where each one transports a cocktail glas from filling station to filling station where different beverages are added.
 
-This project was initiated by the VDI Cologne Group 4-to-90 but it currently paused.
+This project was initiated by the VDI Cologne Group 4-to-90 but is currently paused.
+
+A new concept of the project is drafted [here](concept.org)
 
 ## Car
 
